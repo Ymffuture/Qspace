@@ -98,7 +98,7 @@ useEffect(() => {
 }, []);
 
     return (
-        <div className='flex justify-between items-center h-[60px] fixed w-full z-20 bg-[#1E2227] px-8 border-0'>
+        <div className='flex justify-between items-center h-[60px] fixed w-full z-20 bg-[white] px-8 border-0'>
             <div className='flex justify-center items-center gap-3'>
                 <button onClick={toggleSidebar} className='md:hidden' type='button'>
                     <MdOutlineMenuOpen  className='text-white text-[30px]' title='Menu'/>
@@ -121,7 +121,7 @@ useEffect(() => {
                 
             </div>
             <div className='w-[500px]' title='Search...'>
-                <div className={`md:relative md:block absolute bg-[#1E2227] left-0 w-full md:top-0 top-[60px] md:p-0 p-5 ${showSearch ? 'block' : 'hidden'}`}>
+                <div className={`md:relative md:block absolute bg-[white] left-0 w-full md:top-0 top-[60px] md:p-0 p-5 ${showSearch ? 'block' : 'hidden'}`}>
                   <SearchBox />
                 </div>
             </div>
