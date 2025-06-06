@@ -46,8 +46,8 @@ const SearchBox = () => {
           onInput={getInput}
           value={query}
           placeholder={placeholderList[placeholderIndex]}
-          className={`h-10 rounded-[0] bg-[#23272E] w-full border-[#393f4a] transition-opacity duration-500 ${
-            fade ? 'opacity-100' : 'opacity-75'
+          className={`h-10 rounded-[0] bg-[white] w-full border-[#393f4a] transition-opacity duration-500 ${
+            fade ? 'opacity-100' : 'opacity-100'
           }`}
         />
       </div>
