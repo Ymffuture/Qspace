@@ -101,7 +101,7 @@ useEffect(() => {
         <div className='flex justify-between items-center h-[60px] fixed w-full z-20 bg-[white] px-8 border-0'>
             <div className='flex justify-center items-center gap-3'>
                 <button onClick={toggleSidebar} className='md:hidden' type='button'>
-                    <MdOutlineMenuOpen  className='text-white text-[30px]' title='Menu'/>
+                    <MdOutlineMenuOpen  className='text-[gray] text-[30px]' title='Menu'/>
                     
                 </button>
                 <Link to={RouteIndex} className='w-[100px]' title='Home'>
@@ -132,7 +132,7 @@ useEffect(() => {
                 </button>
                 <div className='text-[#ffffff] flex gap-5 p-3'>
                 <DropdownMenu>
-  <DropdownMenuTrigger className="hover:text-[#23272E] hover:bg-[#1E90FF] rounded-full p-2 transition-all duration-300 dark:text-[#FFD700]">
+  <DropdownMenuTrigger className="hover:text-[#23272E] hover:bg-[#1E90FF] rounded-full p-2 transition-all duration-300 text-[gray] dark:text-[#FFD700]">
     <MdSettings size={24} title='Settings'/>
   </DropdownMenuTrigger>
   <DropdownMenuContent className="w-64 bg-[#23272E] border border-[#23272E] rounded-xl shadow-xl p-2 dark:bg-[#111827] dark:text-white">
