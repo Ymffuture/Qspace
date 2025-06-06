@@ -17,19 +17,15 @@ import { IoCameraOutline } from "react-icons/io5";
 import Dropzone from 'react-dropzone'
 import { setUser } from '@/redux/user/user.slice'
 
-
 const Profile = () => {
-
     const [filePreview, setPreview] = useState()
     const [file, setFile] = useState()
     const user = useSelector((state) => state.user)
 
-    const { data: userData, loading, error } = useFetch(`${getEvn('VITE_API_BASE_URL')}/user/get-user/${user.user._id}`,
+    const { data: userData, loading, error } = useFetch(
+        `${getEvn('VITE_API_BASE_URL')}/user/get-user/${user.user._id}`,
         { method: 'get', credentials: 'include' },
-
     )
-
-
 
     const dispath = useDispatch()
 
@@ -59,8 +55,6 @@ const Profile = () => {
         }
     }, [userData])
 
-
-
     async function onSubmit(values) {
         try {
             const formData = new FormData()
@@ -72,6 +66,7 @@ const Profile = () => {
                 credentials: 'include',
                 body: formData
             })
+
             const data = await response.json()
             if (!response.ok) {
                 return showToast('error', data.message)
@@ -91,38 +86,37 @@ const Profile = () => {
     }
 
     if (loading) return <Loading />
+
     return (
-        <Card className="max-w-screen-md mx-auto ">
-
+        <Card className="max-w-screen-md mx-auto">
             <CardContent>
-                <div className='flex justify-center items-center mt-10' >
-
+                <div className='flex justify-center items-center mt-10'>
                     <Dropzone onDrop={acceptedFiles => handleFileSelection(acceptedFiles)}>
                         {({ getRootProps, getInputProps }) => (
                             <div {...getRootProps()}>
                                 <input {...getInputProps()} />
                                 <Avatar className="w-28 h-28 relative group">
                                     <AvatarImage src={filePreview ? filePreview : userData?.user?.avatar} />
-                                    <div className='absolute z-50 w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 justify-center items-center bg-black bg-opacity-20 border-2 border-violet-500 rounded-full group-hover:flex hidden cursor-pointer'>
-                                        <IoCameraOutline color='#7c3aed' />
+                                    <div className='absolute z-50 w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 justify-center items-center bg-black bg-opacity-20 border-2 border-[gray] rounded-full group-hover:flex hidden cursor-pointer hover:shadow-2xl'>
+                                        <IoCameraOutline color='#555' size='25px' />
                                     </div>
                                 </Avatar>
                             </div>
                         )}
                     </Dropzone>
-
-
                 </div>
+
                 <div>
                     <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)}  >
+                        <form onSubmit={form.handleSubmit(onSubmit)}>
+
                             <div className='mb-3'>
                                 <FormField
                                     control={form.control}
                                     name="name"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Name</FormLabel>
+                                            <FormLabel className="text-gray-500">Name</FormLabel>
                                             <FormControl>
                                                 <Input placeholder="Enter your name" {...field} />
                                             </FormControl>
@@ -131,13 +125,14 @@ const Profile = () => {
                                     )}
                                 />
                             </div>
+
                             <div className='mb-3'>
                                 <FormField
                                     control={form.control}
                                     name="email"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Email</FormLabel>
+                                            <FormLabel className="text-gray-500">Email</FormLabel>
                                             <FormControl>
                                                 <Input placeholder="Enter your email address" {...field} />
                                             </FormControl>
@@ -146,29 +141,30 @@ const Profile = () => {
                                     )}
                                 />
                             </div>
+
                             <div className='mb-3'>
                                 <FormField
                                     control={form.control}
                                     name="bio"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Bio</FormLabel>
+                                            <FormLabel className="text-gray-500">Bio</FormLabel>
                                             <FormControl>
-
-                                                <Textarea type="password" placeholder="Enter bio" {...field} />
+                                                <Textarea placeholder="Enter bio" {...field} />
                                             </FormControl>
                                             <FormMessage />
                                         </FormItem>
                                     )}
                                 />
                             </div>
+
                             <div className='mb-3'>
                                 <FormField
                                     control={form.control}
                                     name="password"
                                     render={({ field }) => (
                                         <FormItem>
-                                            <FormLabel>Password</FormLabel>
+                                            <FormLabel className="text-gray-500">Password</FormLabel>
                                             <FormControl>
                                                 <Input type="password" placeholder="Enter your password" {...field} />
                                             </FormControl>
@@ -181,14 +177,11 @@ const Profile = () => {
                             <Button type="submit" className="w-full">Save Changes</Button>
                         </form>
                     </Form>
-
                 </div>
-
             </CardContent>
-
-
         </Card>
     )
 }
 
 export default Profile
+
