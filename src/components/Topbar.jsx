@@ -190,32 +190,48 @@ useEffect(() => {
                             </Avatar>
 
                         </DropdownMenuTrigger>
-                        <DropdownMenuContent>
-                            <DropdownMenuLabel>
-                                <p>{user.user.name}</p>
-                                <p className='text-sm'>{user.user.email}</p>
-                            </DropdownMenuLabel>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuItem asChild className="cursor-pointer">
-                                <Link to={RouteProfile}>
-                                    <FaRegUser />
-                                    Profile
-                                </Link>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem asChild className="cursor-pointer">
-                                <Link to={RouteBlogAdd}>
-                                    <FaPlus />
-                                    Create Blog
-                                </Link>
-                            </DropdownMenuItem>
+                        <DropdownMenuContent className="w-72 p-2 rounded-xl shadow-xl border border-gray-100 dark:border-gray-800">
+  <DropdownMenuLabel className="flex flex-col space-y-0.5 px-2 py-2">
+    <div className="flex items-center gap-3">
+      <Avatar className="h-9 w-9">
+        <AvatarImage src={user.user.avatar || "/avatar-placeholder.png"} alt={user.user.name} />
+      </Avatar>
+      <div>
+        <p className="font-semibold text-sm leading-tight">{user.user.name}</p>
+        <p className="text-xs text-muted-foreground">{user.user.email}</p>
+      </div>
+    </div>
+  </DropdownMenuLabel>
 
-                            <DropdownMenuSeparator />
+  <DropdownMenuSeparator className="my-1" />
 
-                            <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
-                                <IoLogOutOutline color='red' />
-                                Logout
-                            </DropdownMenuItem>
-                        </DropdownMenuContent>
+  <DropdownMenuItem asChild className="group px-3 py-2 rounded-md cursor-pointer hover:bg-blue-100/40 dark:hover:bg-blue-900/30 transition-all">
+    <Link to={RouteProfile} className="flex items-center gap-3 w-full">
+      <FaRegUser className="text-blue-500 group-hover:scale-110 transition-transform" />
+      <span className="text-sm font-medium">Profile</span>
+    </Link>
+  </DropdownMenuItem>
+
+  <DropdownMenuItem asChild className="group px-3 py-2 rounded-md cursor-pointer hover:bg-green-100/40 dark:hover:bg-green-900/30 transition-all">
+    <Link to={RouteBlogAdd} className="flex items-center gap-3 w-full">
+      <FaPlus className="text-green-500 group-hover:scale-110 transition-transform" />
+      <span className="text-sm font-medium">Create Blog</span>
+    </Link>
+  </DropdownMenuItem>
+
+  <DropdownMenuSeparator className="my-1" />
+
+  <DropdownMenuItem
+    onClick={handleLogout}
+    className="group px-3 py-2 rounded-md cursor-pointer hover:bg-red-100/50 dark:hover:bg-red-900/30 transition-all"
+  >
+    <div className="flex items-center gap-3 w-full">
+      <IoLogOutOutline className="text-red-500 group-hover:scale-110 transition-transform" />
+      <span className="text-sm font-medium text-red-500">Logout</span>
+    </div>
+  </DropdownMenuItem>
+</DropdownMenuContent>
+
                     </DropdownMenu>
 
                 }
