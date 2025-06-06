@@ -4,11 +4,11 @@ import { MdOutlineWarning } from 'react-icons/md';
 
 const Footer = () => {
   return (
-    <footer className="bg-[#23272E] text-gray-300 pt-12 px-6 lg:px-20 pb-6 text-sm">
+    <footer className="text-gray-300 pt-12 px-6 lg:px-20 pb-6 text-sm">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-10 border-b border-gray-600 pb-10">
         {/* About */}
         <div>
-          <h2 className="text-lg font-semibold text-white mb-3">About Qspace</h2>
+          <h2 className="text-lg font-semibold text-[gray] mb-3">About Qspace</h2>
           <p className="text-gray-400 leading-relaxed">
             Qspace is a leading platform by <a href="https://quorvexinstitute.vercel.app" className="text-[#FFD700] hover:underline">Quorvex</a> that delivers quality content, tutorials, and resources to future innovators and coders.
           </p>
@@ -16,7 +16,7 @@ const Footer = () => {
 
         {/* Quick Links */}
         <div>
-          <h2 className="text-lg font-semibold text-white mb-3">Quick Links</h2>
+          <h2 className="text-lg font-semibold text-[gray] mb-3">Quick Links</h2>
           <ul className="space-y-2">
             <li><a href="/blog" className="hover:text-[#32CD32] transition">Blog</a></li>
             <li><a href="/courses" className="hover:text-[#1E90FF] transition">Courses</a></li>
@@ -27,7 +27,7 @@ const Footer = () => {
 
         {/* Social Media */}
         <div>
-          <h2 className="text-lg font-semibold text-white mb-3">Follow Us</h2>
+          <h2 className="text-lg font-semibold text-[gray] mb-3">Follow Us</h2>
           <div className="flex space-x-4">
             <a href="#" className="hover:text-[#1E90FF]"><FaFacebookF /></a>
             <a href="#" className="hover:text-[#1E90FF]"><FaTwitter /></a>
@@ -38,7 +38,7 @@ const Footer = () => {
 
         {/* Newsletter */}
         <div>
-          <h2 className="text-lg font-semibold text-white mb-3">Stay Updated</h2>
+          <h2 className="text-lg font-semibold mb-3">Stay Updated</h2>
           <p className="text-gray-400 mb-3">Join our newsletter for fresh content weekly.</p>
           <form className="flex flex-col space-y-2">
             <input
