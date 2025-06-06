@@ -88,98 +88,99 @@ const Profile = () => {
     if (loading) return <Loading />
 
     return (
-        <Card className="max-w-screen-md mx-auto">
-            <CardContent>
-                <div className='flex justify-center items-center mt-10'>
-                    <Dropzone onDrop={acceptedFiles => handleFileSelection(acceptedFiles)}>
-                        {({ getRootProps, getInputProps }) => (
-                            <div {...getRootProps()}>
-                                <input {...getInputProps()} />
-                                <Avatar className="w-28 h-28 relative group">
-                                    <AvatarImage src={filePreview ? filePreview : userData?.user?.avatar} />
-                                    <div className='absolute z-50 w-full h-full top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 justify-center items-center bg-black bg-opacity-20 border-2 border-[gray] rounded-full group-hover:flex hidden cursor-pointer hover:shadow-2xl'>
-                                        <IoCameraOutline color='#555' size='25px' />
-                                    </div>
-                                </Avatar>
-                            </div>
-                        )}
-                    </Dropzone>
-                </div>
+        <Card className="max-w-2xl mx-auto bg-white/10 backdrop-blur-md rounded-3xl shadow-xl mt-10 border border-gray-300">
+  <CardContent className="p-6">
+    <div className="flex flex-col items-center gap-4 mb-6 relative">
+      <Dropzone onDrop={acceptedFiles => handleFileSelection(acceptedFiles)}>
+        {({ getRootProps, getInputProps }) => (
+          <div {...getRootProps()} className="relative cursor-pointer group">
+            <input {...getInputProps()} />
+            <Avatar className="w-32 h-32 shadow-lg ring-4 ring-white relative group">
+              <AvatarImage
+                src={filePreview || userData?.user?.avatar}
+                className="rounded-full object-cover"
+              />
+              <div className="absolute inset-0 rounded-full bg-black/40 hidden group-hover:flex items-center justify-center transition-all duration-200">
+                <IoCameraOutline size={30} color="#FFF" />
+              </div>
+            </Avatar>
+          </div>
+        )}
+      </Dropzone>
+      <h2 className="text-xl font-semibold text-white">{form.getValues("name") || "Your Name"}</h2>
+      <p className="text-sm text-gray-200 text-center">{form.getValues("bio") || "Add a short bio"}</p>
+    </div>
 
-                <div>
-                    <Form {...form}>
-                        <form onSubmit={form.handleSubmit(onSubmit)}>
+    <Form {...form}>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+        <FormField
+          control={form.control}
+          name="name"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-white">Name</FormLabel>
+              <FormControl>
+                <Input className="bg-white/20 text-white placeholder:text-white/70 rounded-xl" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="email"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-white">Email</FormLabel>
+              <FormControl>
+                <Input className="bg-white/20 text-white placeholder:text-white/70 rounded-xl" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="bio"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-white">Bio</FormLabel>
+              <FormControl>
+                <Textarea className="bg-white/20 text-white placeholder:text-white/70 rounded-xl" {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="password"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-white">Password</FormLabel>
+              <FormControl>
+                <Input
+                  type="password"
+                  className="bg-white/20 text-white placeholder:text-white/70 rounded-xl"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
 
-                            <div className='mb-3'>
-                                <FormField
-                                    control={form.control}
-                                    name="name"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel className="text-gray-500">Name</FormLabel>
-                                            <FormControl>
-                                                <Input placeholder="Enter your name" {...field} />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                            </div>
+        <Button
+          type="submit"
+          className="w-full py-2 mt-2 bg-gradient-to-r from-blue-500 via-green-400 to-yellow-300 hover:brightness-110 text-black font-bold rounded-full transition-all shadow-md"
+        >
+          Save Profile
+        </Button>
+      </form>
+    </Form>
+  </CardContent>
+</Card>
 
-                            <div className='mb-3'>
-                                <FormField
-                                    control={form.control}
-                                    name="email"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel className="text-gray-500">Email</FormLabel>
-                                            <FormControl>
-                                                <Input placeholder="Enter your email address" {...field} />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                            </div>
-
-                            <div className='mb-3'>
-                                <FormField
-                                    control={form.control}
-                                    name="bio"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel className="text-gray-500">Bio</FormLabel>
-                                            <FormControl>
-                                                <Textarea placeholder="Enter bio" {...field} />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                            </div>
-
-                            <div className='mb-3'>
-                                <FormField
-                                    control={form.control}
-                                    name="password"
-                                    render={({ field }) => (
-                                        <FormItem>
-                                            <FormLabel className="text-gray-500">Password</FormLabel>
-                                            <FormControl>
-                                                <Input type="password" placeholder="Enter your password" {...field} />
-                                            </FormControl>
-                                            <FormMessage />
-                                        </FormItem>
-                                    )}
-                                />
-                            </div>
-
-                            <Button type="submit" className="w-full">Save Changes</Button>
-                        </form>
-                    </Form>
-                </div>
-            </CardContent>
-        </Card>
     )
 }
 
