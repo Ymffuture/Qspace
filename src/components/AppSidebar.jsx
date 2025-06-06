@@ -34,15 +34,15 @@ const AppSidebar = () => {
         setLoader(false)
     },5000)
    },[])
-   if (loader) return <div className="bg-[#ffffff] animate-pulse transition-all"></div>
+   if (loader) return <div className="bg-[gray] animate-pulse transition-all"></div>
     return (
 
         <Sidebar className='select-none'>
-            <SidebarHeader className="bg-[#1E2227] text-gray-200 relative md:w-[full] md:h-[70px]">
+            <SidebarHeader className="bg-[white] text-gray-200 relative md:w-[full] md:h-[70px]">
 
             {/* <img src={logo} className='md:w-[148px] md:h-[83px] w-6' /> */}
             </SidebarHeader>
-            <SidebarContent className="bg-[#1E2227] text-[whitesmoke]">
+            <SidebarContent className="bg-[white] text-[gray]">
                 <SidebarGroup>
                     <SidebarMenu>
                         <SidebarMenuItem>
